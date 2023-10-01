@@ -1,6 +1,6 @@
 # weather csv reader into api python webserver
 
-reads csv file into python fastAPI webserver with docker integration
+reads csv file into python fastAPI webserver with docker integration and test suite
 
 ## Getting Started
 
@@ -18,6 +18,8 @@ Clone this repository to your local machine.
    cd <repository-directory> 
    ```
 
+
+### Running app
 
 #### running with docker
    
@@ -60,7 +62,9 @@ Clone this repository to your local machine.
    
 2. Run test
     ```sh
-   docker run csvreaderapp-test
+   in separate terminal
+   cd <repository-directory>/test
+   python -m unittest test_app.py  
     ```
    expected output:
    ```sh
