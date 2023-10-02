@@ -32,14 +32,12 @@ async def get_data_by_id(id: int):
 async def get_data(limit: Optional[int] = Query(None), date: Optional[str] = Query(None),
                    weather: Optional[str] = Query(None)):
     filtered_data = data
-
     if date:
         filtered_data = [row for row in filtered_data if row['date'] == date]
-
     if weather:
         filtered_data = [row for row in filtered_data if row['weather'] == weather]
-
     if limit:
         filtered_data = filtered_data[:limit]
-
+    if len(filtered_data) == 0:
+        raise HTTPException(status_code=404, detail="No result was found")
     return filtered_data

@@ -64,5 +64,10 @@ class APITestSuite(unittest.TestCase):
         for record in response.json():
             self.assertEqual(record.get('weather'), 'rain', "Weather filter is not working")
 
+    def test_query_data_response_404(self):
+        params = {'weather': 'blablabla'}
+        response = requests.get(BASE_URL + QUERY_URL, params=params)
+        self.assertEqual(response.status_code, 404, "Status code is not 404")
+
 if __name__ == '__main__':
     unittest.main()
